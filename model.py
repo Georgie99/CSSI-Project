@@ -7,5 +7,11 @@ class Character(ndb.Model):
     strength=ndb.IntegerProperty(required=True)
     color=ndb.StringProperty(required=True)
     wiki_link=ndb.StringProperty(required=True)
-    #sm=ndb.UserProperty(required=True)
-    #we had problems putting it as a dic thinking of making seperate properties
+    image_url=ndb.StringProperty()
+    up_b=ndb.StringProperty()
+    side_b=ndb.StringProperty()
+    down_b=ndb.StringProperty()
+
+class User(ndb.Model):
+  first_name = ndb.StringProperty()
+  last_name = ndb.StringProperty()

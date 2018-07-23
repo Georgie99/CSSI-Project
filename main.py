@@ -2,6 +2,9 @@ import webapp2
 import jinja2
 import os
 from model import Character
+from model import User
+from google.appengine.api import users
+
 
 jinja_environment = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -22,37 +25,58 @@ class PreferencePage(webapp2.RequestHandler):
         pref = self.request.get("pref")
         color = self.request.get("color")
         character_query = Character.query()
-        if(skill=="beginner"):
-            characters = character_query.filter(Character.skill==3).fetch()
-        elif(skill=="medium"):
-            characters = character_query.filter(Character.skill==2).fetch()
-        else:
-            characters = character_query.filter(Character.skill==1).fetch()
         if(pref=="strength"):
-            characters = character_query.filter(Character.strength>5).fetch()
+            characters = character_query.filter(Character.skill==int(skill)).filter(Character.color==color).filter(Character.strength>5).fetch(3)
         else:
-            characters = character_query.filter(Character.speed>5).fetch()
-        if(color=="red"):
-            characters = character_query.filter(Character.color=="red").fetch()
-        elif(color=="black"):
-            characters = character_query.filter(Character.color=="black").fetch()
-        elif(color=="orange"):
-            characters = character_query.filter(Character.color=="orange").fetch()
-        elif(color=="yellow"):
-            characters = character_query.filter(Character.color=="yellow").fetch()
-        elif(color=="green"):
-            characters = character_query.filter(Character.color=="green").fetch()
-        elif(color=="blue"):
-            characters = character_query.filter(Character.color=="blue").fetch()
-        elif(color=="pink"):
-            characters = character_query.filter(Character.color=="pink").fetch()
+            characters = character_query.filter(Character.skill==int(skill)).filter(Character.color==color).filter(Character.speed>5).fetch(3)
         prefs_template = jinja_environment.get_template('templates/prefs.html')
-        character_dict = {'character':characters}
+        character = ""
+        for i in characters:
+            character = character + "\n" + i.name
+        character_dict = {'character':character}
         self.response.write(prefs_template.render(character_dict))
-        # mario = Character(name="Mario",speed=8,strength=9,color="red",wiki_link="no")
 
+class AboutPage(webapp2.RequestHandler):
+    def get(self):
+        home_template = jinja_environment.get_template('templates/about.html')
+        self.response.write(home_template.render())
+
+class LoginPage(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+        if user:
+          email_address = user.nickname()
+          cssi_user = User.get_by_id(user.user_id())
+          signout_link_html = '<a href="%s">sign out</a>' % (
+              users.create_logout_url('/'))
+          if cssi_user:
+            self.response.write('''
+                Welcome %s %s (%s)!<form action="/">
+                <button>Go to Bank</button>
+                 <br> %s <br>
+                </form><br>''' % (
+                  cssi_user.first_name,
+                  cssi_user.last_name,
+                  email_address,
+                  signout_link_html))
+          else:
+            self.response.write('''
+                Welcome to our site, %s!  Please sign up! <br>
+                <form method="get" action="/bank">
+                <input type="text" name="first_name">
+                <input type="text" name="last_name">
+                <input type="submit">
+                </form><br> %s <br>
+                ''' % (email_address, signout_link_html))
+        else:
+          self.response.write('''
+            Please log in to use our site! <br>
+            <a href="%s">Sign in</a>''' % (
+              users.create_login_url('/')))
 
 app = webapp2.WSGIApplication([
     ('/', HomePage),
-    ('/prefs', PreferencePage)
+    ('/prefs', PreferencePage),
+    ('/abt', AboutPage),
+    ('/login', LoginPage)
 ], debug=True)
