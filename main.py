@@ -8,7 +8,8 @@ jinja_environment = jinja2.Environment(
     autoescape = False)
 
 class HomePage(webapp2.RequestHandler):
-    home_template = jinja_environment.get_template('home.html')
+    home_template = jinja_environment.get_template('templates/home.html')
+    self.response.write(home_template.render())
 
 app = webapp2.WSGIApplication([
     ('/', HomePage)
