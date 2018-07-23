@@ -1,0 +1,9 @@
+
+body {
+    background-image:url('images/smashbrosstart.gif');
+    background-size:100%;
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+    height:100%;
+    width:100%;
+}
