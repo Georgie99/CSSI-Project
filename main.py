@@ -21,8 +21,13 @@ class PreferencePage(webapp2.RequestHandler):
         prefs_template = jinja_environment.get_template('templates/prefs.html')
         # mario = Character(name="Mario",speed=8,strength=9,color="red",wiki_link="no")
 
+class AboutPage(webapp2.RequestHandler):
+    def get(self):
+        home_template = jinja_environment.get_template('templates/about.html')
+        self.response.write(home_template.render())
 
 app = webapp2.WSGIApplication([
     ('/', HomePage),
-    ('/prefs', PreferencePage)
+    ('/prefs', PreferencePage),
+    ('/abt', AboutPage)
 ], debug=True)
