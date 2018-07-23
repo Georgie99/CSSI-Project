@@ -16,6 +16,8 @@ class PreferencePage(webapp2.RequestHandler):
     def get(self):
         prefs_template = jinja_environment.get_template('templates/prefs.html')
         self.response.write(prefs_template.render())
+    def post(self):
+        pass
 
 app = webapp2.WSGIApplication([
     ('/', HomePage),
