@@ -18,6 +18,8 @@ class PreferencePage(webapp2.RequestHandler):
         prefs_template = jinja_environment.get_template('templates/prefs.html')
         self.response.write(prefs_template.render())
     def post(self):
+        mario = Character(strength=2,skill=3,speed=8,name="Mario",wiki_link="no")
+        mario.put()
         skill = self.request.get("skill")
         pref = self.request.get("pref")
         color = self.request.get("color")
@@ -26,8 +28,12 @@ class PreferencePage(webapp2.RequestHandler):
             characters = character_query.filter(Character.skill==3).fetch()
         elif(skill=="medium"):
             characters = character_query.filter(Character.skill==2).fetch()
-        elif(skill=="expert"):
+        else:
             characters = character_query.filter(Character.skill==1).fetch()
+        if(pref=="strength"):
+            characters = character_query.filter(Character.strength>5).fetch()
+        else:
+            characters = character_query.filter(Character.speed>5).fetch()
         prefs_template = jinja_environment.get_template('templates/prefs.html')
         character_dict = {'character':characters}
         self.response.write(prefs_template.render(character_dict))
