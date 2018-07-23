@@ -11,3 +11,7 @@ class Character(ndb.Model):
     up_b=ndb.StringProperty()
     side_b=ndb.StringProperty()
     down_b=ndb.StringProperty()
+
+class User(ndb.Model):
+  first_name = ndb.StringProperty()
+  last_name = ndb.StringProperty()
