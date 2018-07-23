@@ -12,6 +12,12 @@ class HomePage(webapp2.RequestHandler):
         home_template = jinja_environment.get_template('templates/home.html')
         self.response.write(home_template.render())
 
+class PreferencePage(webapp2.RequestHandler):
+    def get(self):
+        prefs_template = jinja_environment.get_template('templates/prefs.html')
+        self.response.write(prefs_template.render())
+
 app = webapp2.WSGIApplication([
-    ('/', HomePage)
+    ('/', HomePage),
+    ('/prefs', PreferencePage)
 ], debug=True)
