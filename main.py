@@ -35,8 +35,8 @@ class PreferencePage(webapp2.RequestHandler):
         else:
             characters = character_query.filter(Character.speed>5).fetch()
         prefs_template = jinja_environment.get_template('templates/prefs.html')
-        character_dict = {'character':characters}
-        self.response.write(prefs_template.render(character_dict))
+        # mario = Character(name="Mario",speed=8,strength=9,color="red",wiki_link="no")
+
 
 app = webapp2.WSGIApplication([
     ('/', HomePage),
