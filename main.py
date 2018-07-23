@@ -32,6 +32,20 @@ class PreferencePage(webapp2.RequestHandler):
             characters = character_query.filter(Character.strength>5).fetch()
         else:
             characters = character_query.filter(Character.speed>5).fetch()
+        if(color=="red"):
+            characters = character_query.filter(Character.color=="red").fetch()
+        elif(color=="black"):
+            characters = character_query.filter(Character.color=="black").fetch()
+        elif(color=="orange"):
+            characters = character_query.filter(Character.color=="orange").fetch()
+        elif(color=="yellow"):
+            characters = character_query.filter(Character.color=="yellow").fetch()
+        elif(color=="green"):
+            characters = character_query.filter(Character.color=="green").fetch()
+        elif(color=="blue"):
+            characters = character_query.filter(Character.color=="blue").fetch()
+        elif(color=="pink"):
+            characters = character_query.filter(Character.color=="pink").fetch()
         prefs_template = jinja_environment.get_template('templates/prefs.html')
         character_dict = {'character':characters}
         self.response.write(prefs_template.render(character_dict))
