@@ -33,6 +33,13 @@ class PreferencePage(webapp2.RequestHandler):
         character = ""
         for i in characters:
             character = character + "\n" + i.name
+        if(character==""):
+            if(pref=="strength"):
+                characters = character_query.filter(Character.skill==int(skill)).filter(Character.strength>5).fetch(3)
+            else:
+                characters = character_query.filter(Character.skill==int(skill)).filter(Character.speed>5).fetch(3)
+            for i in characters:
+                character = character + "\n" + i.name
         character_dict = {'character':character}
         self.response.write(prefs_template.render(character_dict))
 
