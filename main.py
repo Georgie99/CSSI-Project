@@ -29,8 +29,6 @@ class PreferencePage(webapp2.RequestHandler):
         elif(skill=="expert"):
             characters = character_query.filter(Character.skill==1).fetch()
         prefs_template = jinja_environment.get_template('templates/prefs.html')
-        mario = Character(name="Luigi",speed=8,strength=9,skill=2,color="red",wiki_link="no")
-        mario.put()
         character_dict = {'character':characters}
         self.response.write(prefs_template.render(character_dict))
 
