@@ -11,9 +11,12 @@ body {
     height:100%;
     width:100%;
 }
+i{
+  color:white
+}
 div{
   border-radius: 25%;
-  
+
 }
 
 h1#welcome{
