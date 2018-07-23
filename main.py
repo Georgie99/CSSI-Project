@@ -27,7 +27,10 @@ class PreferencePage(webapp2.RequestHandler):
         else:
             characters = character_query.filter(Character.skill==int(skill)).filter(Character.color==color).filter(Character.speed>5).fetch(3)
         prefs_template = jinja_environment.get_template('templates/prefs.html')
-        character_dict = {'character':characters}
+        character = ""
+        for i in characters:
+            character = character + "\n" + i.name
+        character_dict = {'character':character}
         self.response.write(prefs_template.render(character_dict))
 
 class AboutPage(webapp2.RequestHandler):
