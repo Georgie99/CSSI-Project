@@ -18,7 +18,9 @@ class PreferencePage(webapp2.RequestHandler):
         prefs_template = jinja_environment.get_template('templates/prefs.html')
         self.response.write(prefs_template.render())
     def post(self):
-        pass
+        mario = Character(name="Mario",speed=8,strength=9,color="red",wiki_link="no")
+        character_dict = {'character':mario}
+        self.response.write(prefs_template.render(character_dict))
 
 app = webapp2.WSGIApplication([
     ('/', HomePage),
