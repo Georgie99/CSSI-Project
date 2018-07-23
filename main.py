@@ -1,6 +1,7 @@
 import webapp2
 import jinja2
 import os
+from model import Character
 
 jinja_environment = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -17,7 +18,10 @@ class PreferencePage(webapp2.RequestHandler):
         prefs_template = jinja_environment.get_template('templates/prefs.html')
         self.response.write(prefs_template.render())
     def post(self):
-        pass
+        prefs_template = jinja_environment.get_template('templates/prefs.html')
+        mario = Character(name="Mario",speed=8,strength=9,color="red",wiki_link="no")
+        character_dict = {'character':mario}
+        self.response.write(prefs_template.render(character_dict))
 
 app = webapp2.WSGIApplication([
     ('/', HomePage),

@@ -1,6 +1,6 @@
 from google.appengine.ext import ndb
 
-class character(ndb.Model):
+class Character(ndb.Model):
     name=ndb.StringProperty(required=True)
     speed=ndb.IntegerProperty(required=True)
     skill=ndb.IntegerProperty(required=True)
