@@ -9,5 +9,7 @@ handlers:
   script: main.app
 
 libraries:
+- name: webapp2
+  version: latest
 - name: jinja2
   version: latest

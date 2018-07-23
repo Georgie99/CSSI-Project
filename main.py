@@ -5,11 +5,12 @@ import os
 jinja_environment = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions = ['jinja2.ext.autoescape'],
-    autoescape = False)
+    autoescape = True)
 
 class HomePage(webapp2.RequestHandler):
-    home_template = jinja_environment.get_template('templates/home.html')
-    self.response.write(home_template.render())
+    def get(self):
+        home_template = jinja_environment.get_template('templates/home.html')
+        self.response.write(home_template.render())
 
 app = webapp2.WSGIApplication([
     ('/', HomePage)
