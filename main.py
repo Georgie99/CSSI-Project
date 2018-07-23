@@ -26,18 +26,18 @@ class PreferencePage(webapp2.RequestHandler):
         color = self.request.get("color")
         character_query = Character.query()
         if(pref=="strength"):
-            characters = character_query.filter(Character.skill==int(skill)).filter(Character.color==color).filter(Character.strength>5).fetch(3)
+            characters = character_query.filter(Character.skill==int(skill),Character.color==color,Character.strength>5).fetch()
         else:
-            characters = character_query.filter(Character.skill==int(skill)).filter(Character.color==color).filter(Character.speed>5).fetch(3)
+            characters = character_query.filter(Character.skill==int(skill),Character.color==color,Character.speed>5).fetch()
         prefs_template = jinja_environment.get_template('templates/prefs.html')
         character = ""
         for i in characters:
             character = character + "\n" + i.name
         if(character==""):
             if(pref=="strength"):
-                characters = character_query.filter(Character.skill==int(skill)).filter(Character.strength>5).fetch(3)
+                characters = character_query.filter(Character.skill==int(skill),Character.strength>5).fetch()
             else:
-                characters = character_query.filter(Character.skill==int(skill)).filter(Character.speed>5).fetch(3)
+                characters = character_query.filter(Character.skill==int(skill),Character.speed>5).fetch()
             for i in characters:
                 character = character + "\n" + i.name
         character_dict = {'character':character}
