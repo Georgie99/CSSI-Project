@@ -30,8 +30,13 @@ class PreferencePage(webapp2.RequestHandler):
         character_dict = {'character':characters}
         self.response.write(prefs_template.render(character_dict))
 
+class AboutPage(webapp2.RequestHandler):
+    def get(self):
+        home_template = jinja_environment.get_template('templates/about.html')
+        self.response.write(home_template.render())
 
 app = webapp2.WSGIApplication([
     ('/', HomePage),
-    ('/prefs', PreferencePage)
+    ('/prefs', PreferencePage),
+    ('/abt', AboutPage)
 ], debug=True)
