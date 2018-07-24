@@ -57,40 +57,39 @@ class AboutPage(webapp2.RequestHandler):
 
 class LoginPage(webapp2.RequestHandler):
     def get(self):
+        login_template = jinja_environment.get_template('templates/login.html')
         user = users.get_current_user()
+        user_query = User.query()
+        user_fetch = user_query.fetch()
         if user:
-          email_address = user.nickname()
-          cssi_user = User.get_by_id(user.user_id())
-          signout_link_html = '<a href="%s">sign out</a>' % (
-              users.create_logout_url('/'))
-          if cssi_user:
-            self.response.write('''
-                Welcome %s %s (%s)!<form action="/">
-                <button>Go to Bank</button>
-                 <br> %s <br>
-                </form><br>''' % (
-                  cssi_user.first_name,
-                  cssi_user.last_name,
-                  email_address,
-                  signout_link_html))
-          else:
-            self.response.write('''
-                Welcome to our site, %s!  Please sign up! <br>
-                <form method="get" action="/bank">
-                <input type="text" name="first_name">
-                <input type="text" name="last_name">
-                <input type="submit">
-                </form><br> %s <br>
-                ''' % (email_address, signout_link_html))
+            email_address = user.nickname()
+            signout_link_html = '<a href="%s">sign out</a>' % (users.create_logout_url('/'))
+            for i in user_fetch:
+                if(i.email_address==email_address):
+                    previous_user = True
+                    now_user = i
+                    pass
+                else:
+                    previous_user = False
+            if previous_user:
+                text = "Welcome %s %s (%s)!<form action='/home'><button>Go to Site</button><br> %s <br></form><br>" % (now_user.first_name,now_user.last_name,email_address,signout_link_html)
+            else:
+                text = "Welcome to our site, %s!  Please sign up! <br><form method='post'><input type='text' name='first_name'><input type='text' name='last_name'><input type='submit'></form><br> %s <br>" % (email_address, signout_link_html)
         else:
-          self.response.write('''
-            Please log in to use our site! <br>
-            <a href="%s">Sign in</a>''' % (
-              users.create_login_url('/')))
-
+            text = "Please log in to use our site! <br><a href='%s'>Sign in</a>" % (users.create_login_url('/'))
+        text_dict = {'text':text}
+        self.response.write(login_template.render(text_dict))
+    def post(self):
+        user = users.get_current_user()
+        email_address = user.nickname()
+        first_name = self.request.get("first_name")
+        last_name = self.request.get("last_name")
+        new_user = User(email_address=email_address,first_name=first_name,last_name=last_name)
+        new_user.put()
+        self.redirect('/home')
 app = webapp2.WSGIApplication([
-    ('/', HomePage),
+    ('/', LoginPage),
+    ('/home',HomePage),
     ('/prefs', PreferencePage),
     ('/abt', AboutPage),
-    ('/login', LoginPage)
 ], debug=True)
