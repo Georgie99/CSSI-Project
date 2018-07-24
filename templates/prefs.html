@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.light_green-pink.min.css" />
     <link rel="stylesheet" href="../style_dir/about.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <meta charset="UTF-8">
@@ -12,32 +12,47 @@
   </head>
   <body>
 <!-- A workig menu -->
-    <button id="demo-menu-lower-left"
-            class="mdl-button mdl-js-button mdl-button--icon">
-      <i class="material-icons">more_vert</i>
-    </button>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title"> SSB Character Generator</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
 
-    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
-        for="demo-menu-lower-left">
-      <li class="mdl-menu__item"><a id="menu_item" href="/">Home</a></li>
-      <li class="mdl-menu__item mdl-menu__item--full-bleed-divider"><a id="menu_item" href="/prefs">Preferences</a></li>
-      <li class="mdl-menu__item"><a id="menu_item" href="/abt">About</a></li>
-    </ul>
-    <div id="form">
-    <form method = "post">
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title"> SSB Character Generator</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="/">Home</a>
+      <a class="mdl-navigation__link" href="/abt">About</a>
+      <a class="mdl-navigation__link" href="/prefs">Preference</a>
+      <a class="mdl-navigation__link" href="">Log Out(No Link)</a>
+    </nav>
+  </div>
+
+    <form  method = "post">
+      <div class="selectors">
+        <div class="question">
       <h3>Choose your skill level:</h3>
-      <select name="skill">
+      <select  name="skill">
         <option value="3">Beginner</option>
         <option value="2">Medium</option>
         <option value="1">Expert</option>
       </select>
-      <br>
+    </div>
+      <div class="question">
       <h3>Choose your preference:</h3>
-      <select name="pref">
+      <select  name="pref">
         <option value="strength">Strength</option>
         <option value="speed">Speed</option>
       </select>
-      <br>
+    </div>
+      <div class="question">
       <h3>Choose your color:</h3>
       <select name="color">
         <option value="black">Black</option>
@@ -48,8 +63,9 @@
         <option value="orange">Orange</option>
         <option value="red">Red</option>
       </select>
-      <br>
-      <button>Go!</button>
+    </div>
+    </div>
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Go!</button>
     </form>
   </div>
   {{character}}

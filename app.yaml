@@ -5,6 +5,8 @@ threadsafe: true
 handlers:
 - url: /templates
   script: templates
+- url: /video
+  script: video
 - url: /style_dir
   static_dir: style_dir
 - url: /images

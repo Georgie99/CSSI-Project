@@ -3,7 +3,7 @@
   background:  url(/images/smashbrosstart.gif) no-repeat center center fixed;
   background-size: cover;
 } */
-body {
+/* body {
 
     background-image:url('../images/smashbrosstart.gif');
     background-size: cover;
@@ -11,15 +11,17 @@ body {
     background-attachment: fixed;
     height:100%;
     width:100%;
-    /* display: flex; */
-}
+    /* display: flex;
+} */
 i{
   color:white
 }
 div.start{
   position: relative;
+  margin-top: 12.5%;
+  margin-bottom: auto;
+  top: 50%;
   left: 25%;
-  top: 25%;
   height:auto;
   width:50%;
   display: flex;
@@ -30,12 +32,16 @@ div.start{
   padding: 20px;
   border-color: rgba(0,0,0, .7);
   overflow: auto;
-  border-radius:
-
 
 }
 
-
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
 .starttext{
   color:white;
 }

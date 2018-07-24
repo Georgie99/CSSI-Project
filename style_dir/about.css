@@ -1,3 +1,6 @@
+header{
+  color: black;
+}
 .demo-card-image.mdl-card {
   width: 256px;
   height: 256px;
@@ -17,4 +20,7 @@
   color: #fff;
   font-size: 14px;
   font-wei
+}
+#head{
+  background-color: black;
 }
