@@ -31,6 +31,19 @@ indexes:
 
 - kind: Character
   properties:
+  - name: color
+  - name: skill
+  - name: strength
+    direction: desc
+
+- kind: Character
+  properties:
+  - name: skill
+  - name: strength
+    direction: desc
+
+- kind: Character
+  properties:
   - name: skill
   - name: speed
 

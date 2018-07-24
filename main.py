@@ -9,7 +9,7 @@ from google.appengine.api import users
 jinja_environment = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions = ['jinja2.ext.autoescape'],
-    autoescape = True)
+    autoescape = False)
 
 class HomePage(webapp2.RequestHandler):
     def get(self):
@@ -30,17 +30,17 @@ class PreferencePage(webapp2.RequestHandler):
         else:
             characters = character_query.filter(Character.skill==int(skill),Character.color==color,Character.speed>5).order(-Character.speed).fetch()
         prefs_template = jinja_environment.get_template('templates/prefs.html')
-        character = ""
+        character = []
         for i in characters:
-            character = character + "\n" + i.name
-        if(character==""):
+            character.append('<img src="%s"><br>' % i.image_url)
+        if(character==[]):
             if(pref=="strength"):
                 characters = character_query.filter(Character.skill==int(skill),Character.strength>5).order(-Character.strength).fetch()
             else:
                 characters = character_query.filter(Character.skill==int(skill),Character.speed>5).order(-Character.speed).fetch()
             for i in characters:
-                character = character + "\n" + i.name
-        character_dict = {'character':character}
+                character.append('<img src="%s"><br>' % i.image_url)
+        character_dict = {'character':"".join(character)}
         self.response.write(prefs_template.render(character_dict))
 
 class AboutPage(webapp2.RequestHandler):
