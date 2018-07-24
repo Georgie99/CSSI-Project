@@ -87,9 +87,35 @@ class LoginPage(webapp2.RequestHandler):
         new_user = User(email_address=email_address,first_name=first_name,last_name=last_name)
         new_user.put()
         self.redirect('/home')
+
+class ProfilePage(webapp2.RequestHandler):
+    def get(self):
+        profile_template = jinja_environment.get_template('templates/profile.html')
+        user = users.get_current_user()
+        email_address = user.nickname()
+        user_query = User.query()
+        user_fetch = user_query.fetch()
+        signout_link_html = '<a href="%s">sign out</a>' % (users.create_logout_url('/'))
+        line1 = ""
+        line2 = ""
+        line3 = ""
+        if user:
+            for i in user_fetch:
+                if(i.email_address==email_address):
+                    now_user = i
+            line1 = "Welcome to your profile page!"
+            line2 = "Your name: " + now_user.first_name + " " + now_user.last_name
+            line3 = "Your email address: " + now_user.email_address
+        else:
+            line1 = "Sorry, please log in to continue."
+        lines_dict = {'line1':line1,'line2':line2,'line3':line3}
+        self.response.write(profile_template.render(lines_dict))
+
+
 app = webapp2.WSGIApplication([
     ('/', LoginPage),
     ('/home',HomePage),
     ('/prefs', PreferencePage),
     ('/abt', AboutPage),
+    ('/profile',ProfilePage)
 ], debug=True)

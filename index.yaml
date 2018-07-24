@@ -39,12 +39,6 @@ indexes:
 - kind: Character
   properties:
   - name: skill
-  - name: strength
-    direction: desc
-
-- kind: Character
-  properties:
-  - name: skill
   - name: speed
 
 - kind: Character
@@ -57,3 +51,9 @@ indexes:
   properties:
   - name: skill
   - name: strength
+
+- kind: Character
+  properties:
+  - name: skill
+  - name: strength
+    direction: desc
