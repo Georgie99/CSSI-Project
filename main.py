@@ -33,6 +33,7 @@ class PreferencePage(webapp2.RequestHandler):
         character = []
         for i in characters:
             character.append('<img src="%s"><br>' % i.image_url)
+            character.append('<p>%s</p><br>' % i.name)
         if(character==[]):
             if(pref=="strength"):
                 characters = character_query.filter(Character.skill==int(skill),Character.strength>5).order(-Character.strength).fetch()
@@ -40,6 +41,7 @@ class PreferencePage(webapp2.RequestHandler):
                 characters = character_query.filter(Character.skill==int(skill),Character.speed>5).order(-Character.speed).fetch()
             for i in characters:
                 character.append('<img src="%s"><br>' % i.image_url)
+                character.append('<p>%s</p><br>' % i.name)
         character_dict = {'character':"".join(character)}
         self.response.write(prefs_template.render(character_dict))
 
