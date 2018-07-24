@@ -35,14 +35,15 @@ class PreferencePage(webapp2.RequestHandler):
             character.append('<img src="%s"><br>' % i.image_url)
             character.append('<p>%s</p><br>' % i.name)
             character.append('<p>Wiki Link: %s</p><br>' % i.wiki_link)
-            character.append('<p>Moves: %s %s %s</p><br>' % (i.up_b,i.side_b,i.down_b))
+            character.append('<p>Special Moves: %s, %s, %s</p><br>' % (i.up_b,i.side_b,i.down_b))
         if(character==[]):
+            character.append('Sorry, we don\'t have exactly what you\'re looking for, but try these similar characters!')
             if(pref=="strength"):
                 characters = character_query.filter(Character.skill==int(skill),Character.strength>5).order(-Character.strength).fetch()
             else:
                 characters = character_query.filter(Character.skill==int(skill),Character.speed>5).order(-Character.speed).fetch()
             for i in characters:
-                character.append('<img id="image" src="%s">' % i.image_url)
+                character.append('<br><img id="image" src="%s">' % i.image_url)
                 character.append('<p class="text">%s</p><br>' % i.name)
                 character.append('<p class="text">Wiki Link: %s</p><br>' % i.wiki_link)
                 character.append('<p class="text">Moves: %s, %s, %s</p><br>' % (i.up_b,i.side_b,i.down_b))
