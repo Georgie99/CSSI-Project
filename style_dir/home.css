@@ -30,7 +30,7 @@ div.start{
   padding: 20px;
   border-color: rgba(0,0,0, .7);
   overflow: auto;
-  border-radius: 
+  border-radius:
 
 
 }
@@ -46,12 +46,17 @@ div.start{
 
 #prefbutt{
   order: 1;
-
-
-
-
 }
 
 #menu{
   background-color: black;
 }
+div.mdl-layout__drawer-button {
+  /* This background is dark, so we set text to white. Use 87% black instead if
+     your background is light. */
+  color: white;
+  background-color: black;
+}
+/* div.mdl-layout__drawer{
+  background-color: black;
+} */
