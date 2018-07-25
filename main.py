@@ -43,7 +43,7 @@ class PreferencePage(webapp2.RequestHandler):
             else:
                 characters = character_query.filter(Character.skill==int(skill),Character.speed>5).order(-Character.speed).fetch()
             for i in characters:
-                character.append('<div class="character"><img id="charimage" src="%s">' % i.image_url)
+                character.append('<img src="%s">' % i.image_url)
                 character.append('<p class="chartext" id="charline1">%s</p><br>' % i.name)
                 character.append('<p class="chartext" id="charline2">Wiki Link: %s</p><br>' % i.wiki_link)
                 character.append('<p class="chartext" id="charline3">Moves: %s, %s, %s</p></div>' % (i.up_b,i.side_b,i.down_b))
