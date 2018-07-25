@@ -101,7 +101,7 @@ class ProfilePage(webapp2.RequestHandler):
                 email_address = user.nickname()
                 if(i.email_address==email_address):
                     now_user = i
-            line2 = "Your name: " + now_user.first_name + " " + now_user.last_name
+            line2 = "Welcome " + now_user.first_name + " " + now_user.last_name
             line3 = "Your email address: " + now_user.email_address
         else:
             line2 = "Sorry, please log in to continue."

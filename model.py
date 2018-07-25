@@ -16,3 +16,4 @@ class User(ndb.Model):
   first_name = ndb.StringProperty()
   last_name = ndb.StringProperty()
   email_address = ndb.StringProperty()
+  saved_chars = ndb.StringProperty(repeated=True)
