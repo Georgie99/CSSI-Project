@@ -2,16 +2,11 @@ header{
   color: black;
 }
 body
-.demo-card-image.mdl-card {
+/* .demo-card-image.mdl-card {
   width: 256px;
   height: 256px;
   background: url(../images/characters/ryu.gif) center / cover;
-}
-.demo-card-image2.mdl-card {
-  width: 256px;
-  height: 256px;
-  background: url(../images/characters/lucas.gif) center / cover;
-}
+} */
 .demo-card-image > .mdl-card__actions {
   height: 52px;
   padding: 16px;
@@ -24,4 +19,14 @@ body
 }
 #head{
   background-color: black;
+}
+#allcharacters{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.mdl-grid{
+  width: 30%;
+  min-height: auto
+
 }

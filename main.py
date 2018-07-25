@@ -1,5 +1,6 @@
 import webapp2
 import jinja2
+import random
 import os
 from model import Character
 from model import User
@@ -47,11 +48,16 @@ class PreferencePage(webapp2.RequestHandler):
 
 class AboutPage(webapp2.RequestHandler):
     def get(self):
+        n = ''
         home_template = jinja_environment.get_template('templates/about.html')
         character_query = Character.query()
         characters= character_query.fetch()
         character_dict = {'characters':characters}
+        # def NameandrandomNumber(name):
+        #     thing="../%s/%d.gif"%(name, random.randint(1,4))
+        #     return thing
         self.response.write(home_template.render(character_dict))
+
 
 class LoginPage(webapp2.RequestHandler):
     def get(self):
