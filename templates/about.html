@@ -66,6 +66,7 @@
 <br>
 <br>
 <!--i hope this works as a grid -->
+{% for character in characters %}
 <div class="mdl-grid">
 <!-- Image card -->
 <div class="demo-card-image mdl-card mdl-shadow--2dp">
@@ -78,20 +79,21 @@
 <div class="demo-card-event mdl-card mdl-shadow--2dp">
   <div class="mdl-card__title mdl-card--expand">
     <h4>
-      Tagline<br>
-      Nickname<br>
+      {{character.name}}<br>
       s: , s: , s: ,
     </h4>
   </div>
   <div class="mdl-card__actions mdl-card--border">
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-      Wiki Link
+    <a href="{{character.wiki_link}}"class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+      {{character.wiki_link}}
     </a>
     <div class="mdl-layout-spacer"></div>
     <!-- <i class="material-icons">event</i> -->
   </div>
 </div>
 </div>
+{% endfor %}
+
 <div class="mdl-grid">
 <div class="demo-card-image2 mdl-card mdl-shadow--2dp">
   <div class="mdl-card__title mdl-card--expand"></div>
