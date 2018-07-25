@@ -1,76 +1,86 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.light_green-pink.min.css" />
-    <link rel="stylesheet" href="../style_dir/about.css">
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../style_dir/prefs.css">
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.light_green-pink.min.css" />
+  <link rel="stylesheet" href="../style_dir/about.css">
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../style_dir/prefs.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet">
-    <title></title>
-  </head>
-  <body>
-<!-- A workig menu -->
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-  <header class="mdl-layout__header">
-    <div class="mdl-layout__header-row">
-      <!-- Title -->
-      <span class="mdl-layout-title"> SSB Character Generator</span>
-      <!-- Add spacer, to align navigation to the right -->
-      <div class="mdl-layout-spacer"></div>
-      <!-- Navigation. We hide it in small screens. -->
-      <nav class="mdl-navigation mdl-layout--large-screen-only">
+  <title></title>
+</head>
+<body>
+  <!-- A workig menu -->
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title"> SSB Character Generator</span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation. We hide it in small screens. -->
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
 
+        </nav>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title"> SSB Character Generator</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="/home">Home</a>
+        <a class="mdl-navigation__link" href="/abt">About</a>
+        <a class="mdl-navigation__link" href="/prefs">Preference</a>
+        <a class="mdl-navigation__link" href="/profile">Your Profile</a>
+        <a class="mdl-navigation__link" href="/">Log Out</a>
       </nav>
     </div>
-  </header>
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title"> SSB Character Generator</span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="/home">Home</a>
-      <a class="mdl-navigation__link" href="/abt">About</a>
-      <a class="mdl-navigation__link" href="/prefs">Preference</a>
-      <a class="mdl-navigation__link" href="/profile">Your Profile</a>
-      <a class="mdl-navigation__link" href="/">Log Out</a>
-    </nav>
-  </div>
 
     <form  method = "post">
       <div class="selectors">
         <div class="question">
-      <h4>Choose your skill level:</h4>
-      <select  name="skill">
-        <option value="3">Beginner</option>
-        <option value="2">Medium</option>
-        <option value="1">Expert</option>
-      </select>
-    </div>
-      <div class="question">
-      <h4>Choose your preference:</h4>
-      <select  name="pref">
-        <option value="strength">Strength</option>
-        <option value="speed">Speed</option>
-      </select>
-    </div>
-      <div class="question">
-      <h4>Choose your color:</h4>
-      <select name="color">
-        <option value="black">Black</option>
-        <option value="pink">Pink</option>
-        <option value="blue">Blue</option>
-        <option value="green">Green</option>
-        <option value="yellow">Yellow</option>
-        <option value="orange">Orange</option>
-        <option value="red">Red</option>
-      </select>
-    </div>
-  </div>
+          <h4>Choose your skill level:</h4>
+          <select  name="skill">
+            <option value="3">Beginner</option>
+            <option value="2">Medium</option>
+            <option value="1">Expert</option>
+          </select>
+        </div>
+        <div class="question">
+          <h4>Choose your preference:</h4>
+          <select  name="pref">
+            <option value="strength">Strength</option>
+            <option value="speed">Speed</option>
+          </select>
+        </div>
+        <div class="question">
+          <h4>Choose your color:</h4>
+          <select name="color">
+            <option value="black">Black</option>
+            <option value="pink">Pink</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+            <option value="yellow">Yellow</option>
+            <option value="orange">Orange</option>
+            <option value="red">Red</option>
+          </select>
+        </div>
+      </div>
 
       <button id="butt" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Go!</button>
     </form>
+<<<<<<< HEAD
     <div id='characterdiv'>
   {{character}}
 </div>
+=======
+    {% for character in characters %}
+      <img id="charimage" src="{{character.image_url}}">
+      <p class="chartext" id="charline1">{{character.name}}</p><br>
+      <p class="chartext" id="charline2">Wiki Link: {{character.wiki_link}}</p><br>
+      <p class="chartext" id="charline1">Moves: {{character.up_b}}, {{character.side_b}}, {{character.down_b}}</p>
+    {% endfor %}
+
+>>>>>>> 7ca4da3afe6cfb51e998a9e2c004a565d15ef6dc
   </body>
-</html>
+  </html>

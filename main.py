@@ -9,7 +9,7 @@ from google.appengine.ext import ndb
 jinja_environment = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions = ['jinja2.ext.autoescape'],
-    autoescape = False)
+    autoescape = True)
 
 class HomePage(webapp2.RequestHandler):
     def get(self):
@@ -42,12 +42,16 @@ class PreferencePage(webapp2.RequestHandler):
                 characters = character_query.filter(Character.skill==int(skill),Character.strength>5).order(-Character.strength).fetch()
             else:
                 characters = character_query.filter(Character.skill==int(skill),Character.speed>5).order(-Character.speed).fetch()
+<<<<<<< HEAD
             for i in characters:
                 character.append('<img src="%s">' % i.image_url)
                 character.append('<p class="chartext" id="charline1">%s</p><br>' % i.name)
                 character.append('<p class="chartext" id="charline2">Wiki Link: %s</p><br>' % i.wiki_link)
                 character.append('<p class="chartext" id="charline3">Moves: %s, %s, %s</p></div>' % (i.up_b,i.side_b,i.down_b))
         character_dict = {'character':"".join(character)}
+=======
+        character_dict = {'characters':characters}
+>>>>>>> 7ca4da3afe6cfb51e998a9e2c004a565d15ef6dc
         self.response.write(prefs_template.render(character_dict))
 
 class AboutPage(webapp2.RequestHandler):
