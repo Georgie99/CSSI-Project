@@ -37,7 +37,6 @@ class PreferencePage(webapp2.RequestHandler):
             character.append('<p>Wiki Link: %s</p><br>' % i.wiki_link)
             character.append('<p>Special Moves: %s, %s, %s</p><br>' % (i.up_b,i.side_b,i.down_b))
         if(character==[]):
-            character.append('Sorry, we don\'t have exactly what you\'re looking for, but try these similar characters!')
             if(pref=="strength"):
                 characters = character_query.filter(Character.skill==int(skill),Character.strength>5).order(-Character.strength).fetch()
             else:
