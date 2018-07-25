@@ -11,8 +11,11 @@ handlers:
   static_dir: style_dir
 - url: /images
   static_dir: images
+- url: /scripts
+  static_dir: scripts
 - url: /.*
   script: main.app
+
 
 libraries:
 - name: webapp2
