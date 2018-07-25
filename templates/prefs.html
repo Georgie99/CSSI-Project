@@ -28,10 +28,11 @@
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title"> SSB Character Generator</span>
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="/">Home</a>
+      <a class="mdl-navigation__link" href="/home">Home</a>
       <a class="mdl-navigation__link" href="/abt">About</a>
       <a class="mdl-navigation__link" href="/prefs">Preference</a>
-      <a class="mdl-navigation__link" href="">Log Out(No Link)</a>
+      <a class="mdl-navigation__link" href="/profile">Your Profile</a>
+      <a class="mdl-navigation__link" href="/">Log Out</a>
     </nav>
   </div>
 
@@ -64,12 +65,10 @@
         <option value="red">Red</option>
       </select>
     </div>
-    </div>
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Go!</button>
-    </form>
   </div>
-  <div>
+
+      <button id="butt" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Go!</button>
+    </form>
   {{character}}
-</div>
   </body>
 </html>
