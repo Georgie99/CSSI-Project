@@ -69,18 +69,15 @@
 
       <button id="butt" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Go!</button>
     </form>
-<<<<<<< HEAD
-    <div id='characterdiv'>
-  {{character}}
-</div>
-=======
+
+<div id='characterdiv'>
     {% for character in characters %}
       <img id="charimage" src="{{character.image_url}}">
       <p class="chartext" id="charline1">{{character.name}}</p><br>
       <p class="chartext" id="charline2">Wiki Link: {{character.wiki_link}}</p><br>
       <p class="chartext" id="charline1">Moves: {{character.up_b}}, {{character.side_b}}, {{character.down_b}}</p>
     {% endfor %}
+    </div>
 
->>>>>>> 7ca4da3afe6cfb51e998a9e2c004a565d15ef6dc
   </body>
   </html>
