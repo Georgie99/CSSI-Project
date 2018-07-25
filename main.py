@@ -4,7 +4,7 @@ import os
 from model import Character
 from model import User
 from google.appengine.api import users
-
+from google.appengine.ext import ndb
 
 jinja_environment = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -61,14 +61,15 @@ class LoginPage(webapp2.RequestHandler):
         user = users.get_current_user()
         user_query = User.query()
         user_fetch = user_query.fetch()
+        print(user_fetch)
         if user:
             email_address = user.nickname()
             signout_link_html = '<a href="%s">sign out</a>' % (users.create_logout_url('/'))
             for i in user_fetch:
-                if(i.email_address==email_address):
+                if(str(i.email_address)==email_address):
                     previous_user = True
                     now_user = i
-                    pass
+                    break
                 else:
                     previous_user = False
             if previous_user:
