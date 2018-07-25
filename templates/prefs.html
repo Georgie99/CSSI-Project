@@ -78,7 +78,7 @@
         <p class="chartext" id="charline1"><b>{{character.name}}</b></p>
         <p class="chartext" id="charline2">Wiki Link: <a href='{{character.wiki_link}}'>{{character.wiki_link}}</a></p>
         <p class="chartext" id="charline1">Special Moves: {{character.up_b}}, {{character.side_b}}, {{character.down_b}}</p>
-        <button value = "{{character.key}}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect savebutton" name="savebutton">Save character to profile</button><br>
+        <button value = "{{character.key.id()}}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect savebutton" name="savebutton">Save character to profile</button><br>
       </div>
     {% endfor %}
 
