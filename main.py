@@ -58,17 +58,14 @@ class LoginPage(webapp2.RequestHandler):
         user = users.get_current_user()
         user_query = User.query()
         user_fetch = user_query.fetch()
-        print(user_fetch)
         if user:
             email_address = user.nickname()
             signout_link_html = '<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect starttext" href="%s">sign out</a>' % (users.create_logout_url('/'))
+            previous_user = False
             for i in user_fetch:
                 if(str(i.email_address)==email_address):
                     previous_user = True
                     now_user = i
-                    break
-                else:
-                    previous_user = False
             if previous_user:
                 text1 = "Welcome %s!" % (now_user.first_name)
                 text2 ="<form action='/home'><button class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect starttext'>Go to Site</button><br> %s <br></form><br>" % signout_link_html
