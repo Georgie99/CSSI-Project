@@ -1,0 +1,13 @@
+body {
+  background-color: #333;
+  color: mistyrose;
+  font-family: 'Roboto Slab', serif;
+  margin: 0;
+  align-content:center;
+
+}
+#prefs{
+  background-color: black;
+  width: 100%;
+  height: inherit;
+}
