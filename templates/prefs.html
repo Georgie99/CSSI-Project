@@ -9,10 +9,7 @@
   <link rel="stylesheet" href="../style_dir/prefs.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
+
   <title></title>
 </head>
 <body>
@@ -78,7 +75,7 @@
 
 
       {% for character in characters %}
-      <div id='character' data-aos="zoom-in-up">
+      <div id='character' >
         <img id="charimage" src="{{character.image_url}}">
         <p class="chartext" id="charline1"><b>{{character.name}}</b></p>
         <p class="chartext" id="charline2">Wiki Link: <a href='{{character.wiki_link}}'>{{character.wiki_link}}</a></p>
@@ -89,5 +86,9 @@
 
 
     <script src="../scripts/save.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </body>
   </html>
