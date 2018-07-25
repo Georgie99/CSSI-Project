@@ -49,7 +49,7 @@ class AboutPage(webapp2.RequestHandler):
     def get(self):
         home_template = jinja_environment.get_template('templates/about.html')
         character_query = Character.query()
-        characters= character_query.fetch()
+        characters= character_query.order(Character.name).fetch()
         character_dict = {'characters':characters}
         self.response.write(home_template.render(character_dict))
 
