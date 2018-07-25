@@ -45,8 +45,8 @@ class PreferencePage(webapp2.RequestHandler):
             for i in characters:
                 character.append('<div class="character"><img id="charimage" src="%s">' % i.image_url)
                 character.append('<p class="chartext" id="charline1">%s</p><br>' % i.name)
-                character.append('<p class="chartext" id="charline1">Wiki Link: %s</p><br>' % i.wiki_link)
-                character.append('<p class="chartext" id="charline1">Moves: %s, %s, %s</p></div>' % (i.up_b,i.side_b,i.down_b))
+                character.append('<p class="chartext" id="charline2">Wiki Link: %s</p><br>' % i.wiki_link)
+                character.append('<p class="chartext" id="charline3">Moves: %s, %s, %s</p></div>' % (i.up_b,i.side_b,i.down_b))
         character_dict = {'character':"".join(character)}
         self.response.write(prefs_template.render(character_dict))
 
