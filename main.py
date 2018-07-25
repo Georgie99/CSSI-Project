@@ -68,12 +68,15 @@ class LoginPage(webapp2.RequestHandler):
                 else:
                     previous_user = False
             if previous_user:
-                text = "Welcome %s %s (%s)! <form action='/home'><button>Go to Site</button><br> %s <br></form><br>" % (now_user.first_name,now_user.last_name,email_address,signout_link_html)
+                text1 = "Welcome %s %s (%s)!" % (now_user.first_name,now_user.last_name,email_address)
+                text2 ="<form action='/home'><button>Go to Site</button><br> %s <br></form><br>" % signout_link_html
             else:
-                text = "Welcome to our site, %s!  Please sign up! <br><form method='post'><input type='text' name='first_name'><input type='text' name='last_name'><input type='submit'></form><br> %s <br>" % (email_address, signout_link_html)
+                text1 = "Welcome to our site, %s!  Please sign up!" % (email_address)
+                text2 = "<br><form method='post'><input type='text' name='first_name'><input type='text' name='last_name'><input type='submit'></form><br> %s <br>" %  (signout_link_html)
         else:
-            text = "Please log in to use our site! <br><a href='%s'>Sign in</a>" % (users.create_login_url('/'))
-        text_dict = {'text':text}
+            text1 = "Welcome to the Super Smash Brothers Character Generator! Please log in!"
+            text2 = "<br><a href='%s'>Sign in</a>" % (users.create_login_url('/'))
+        text_dict = {'text1':text1,'text2':text2}
         self.response.write(login_template.render(text_dict))
     def post(self):
         user = users.get_current_user()

@@ -1,10 +1,58 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    {{text}}
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.light_green-pink.min.css" />
+  <link rel="stylesheet" href="../style_dir/home.css">
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <link rel ="stylesheet" href="style_dir/home.css">
+</head>
+<body>
+  <iframe id="myVideo" width="560" height="315" src="https://www.youtube.com/embed/jEg86qr9Y14?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+  </iframe>
+
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title"> SSB Character Generator</span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation. We hide it in small screens. -->
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+
+        </nav>
+      </div>
+    </header>
+    <main class="mdl-layout__content">
+      <div class="start"><h1 class="starttext" id="welcome">{{text1}}</h1>
+      {{text2}}
+      </div>
+    </div>
+    </main>
+  </div>
+
+  </div>
+  <video  autoplay muted loop id="myVideo">
+  <source src="https://youtu.be/jEg86qr9Y14" type="video/mp4">
+</video>
+
+
+
+
+<!-- <form action = "/prefs">
+<button>Change your preferences!</button>
+</form> -->
+
+<!-- <form action = "/prefs">
+<button>Change your preferences!</button>
+</form> -->
+
+<!-- <form action = "/prefs">
+<button>Change your preferences!</button>
+</form> -->
+</body>
 </html>
