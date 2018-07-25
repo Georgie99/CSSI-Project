@@ -30,13 +30,7 @@ class PreferencePage(webapp2.RequestHandler):
         else:
             characters = character_query.filter(Character.skill==int(skill),Character.color==color,Character.speed>5).order(-Character.speed).fetch()
         prefs_template = jinja_environment.get_template('templates/prefs.html')
-        character = []
-        for i in characters:
-            character.append('<img src="%s"><br>' % i.image_url)
-            character.append('<p>%s</p><br>' % i.name)
-            character.append('<p>Wiki Link: %s</p><br>' % i.wiki_link)
-            character.append('<p>Special Moves: %s, %s, %s</p><br>' % (i.up_b,i.side_b,i.down_b))
-        if(character==[]):
+        if(characters==[]):
             if(pref=="strength"):
                 characters = character_query.filter(Character.skill==int(skill),Character.strength>5).order(-Character.strength).fetch()
             else:
