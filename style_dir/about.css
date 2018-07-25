@@ -52,7 +52,7 @@ header{
   min-height: auto
 
 }
-#div1, #div2, #div3{
+.textBoxes{
   display: flex;
   flex-direction: column;
   padding: 3.125%;
