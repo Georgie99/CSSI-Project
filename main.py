@@ -49,7 +49,7 @@ class LoginPage(webapp2.RequestHandler):
         email_address = user.nickname()
         first_name = self.request.get("first_name")
         last_name = self.request.get("last_name")
-        new_user = User(email_address=email_address,first_name=first_name,last_name=last_name,saved_chars=["please work"])
+        new_user = User(email_address=email_address,first_name=first_name,last_name=last_name,saved_chars=[])
         new_user.put()
         self.redirect('/home')
 
@@ -76,6 +76,7 @@ class PreferencePage(webapp2.RequestHandler):
             character_dict = {'characters':characters}
             self.response.write(prefs_template.render(character_dict))
         elif(self.request.get("type")=="addChar"):
+            print(user)
             user_query = User.query()
             user_fetch = user_query.fetch()
             if user:
@@ -85,6 +86,7 @@ class PreferencePage(webapp2.RequestHandler):
                         now_user = i
                 now_user.saved_chars.append(self.request.get("characterKey"))
                 now_user.put()
+                print(now_user)
             else:
                 self.response.write('''Log in first!''')
 class AboutPage(webapp2.RequestHandler):
