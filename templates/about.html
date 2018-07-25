@@ -5,6 +5,22 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.light_green-pink.min.css" />
     <link rel="stylesheet" href="../style_dir/about.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script>
+    // const area = document.querySelector('.demo-card-image.mdl-card');
+    // function name(n) {
+    //   area.style.background = n
+    // }
+    //
+    // function gifs(name) {
+    //   let n=Math.floor(Math.random() * 3) + 1
+    //   return "../images/"+name+"/"+n+".gif"
+    // }
+    // function complete(z) {
+    //   gifs(z)
+    // }
+    //
+    // area.addEventListener('onmouseover', ))
+    </script>
     <meta charset="utf-8">
     <title></title>
   </head>
@@ -76,13 +92,15 @@ Super Smash Bros. for Nintendo 3DS / Wii U (2014) is the first instance of the s
 <br>
 <h1 align="center"><b>Character List</b> </h1>
 <!--i hope this works as a grid -->
+<div id='allcharacters'>
 {% for character in characters %}
 <div class="mdl-grid">
+  {%set n = character.name%}
 <!-- Image card -->
-<div class="demo-card-image mdl-card mdl-shadow--2dp">
+<div style="background: black;background-image:url({{character.image_url}}); background-repeat: no-repeat;"class="demo-card-image mdl-card mdl-shadow--2dp">
   <div class="mdl-card__title mdl-card--expand"></div>
   <div class="mdl-card__actions">
-    <span class="demo-card-image__filename">ryu.gif</span>
+    <span class="demo-card-image__filename">{{character.name}} in action</span>
   </div>
 </div>
 <!-- Event card -->
@@ -90,7 +108,7 @@ Super Smash Bros. for Nintendo 3DS / Wii U (2014) is the first instance of the s
   <div class="mdl-card__title mdl-card--expand">
     <h4>
       {{character.name}}<br>
-      s: , s: , s: ,
+      Speed:{{character.speed}} , Strength:{{character.strength}} , Skill:{{character.skill}}
     </h4>
   </div>
   <div class="mdl-card__actions mdl-card--border">
@@ -103,31 +121,8 @@ Super Smash Bros. for Nintendo 3DS / Wii U (2014) is the first instance of the s
 </div>
 </div>
 {% endfor %}
-
-<div class="mdl-grid">
-<div class="demo-card-image2 mdl-card mdl-shadow--2dp">
-  <div class="mdl-card__title mdl-card--expand"></div>
-  <div class="mdl-card__actions">
-    <span class="demo-card-image2__filename">lucas.gif</span>
-  </div>
 </div>
-<!-- Event card -->
-<div class="demo-card-event mdl-card mdl-shadow--2dp">
-  <div class="mdl-card__title mdl-card--expand">
-    <h4>
-      Name<br>
-      <br>
-      Speed: , Strength: , Level: ,
-    </h4>
-  </div>
-  <div class="mdl-card__actions mdl-card--border">
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-      Wiki Link
-    </a>
-    <div class="mdl-layout-spacer"></div>
-    </div>
-    </div>
-    </div>
+
     <!-- <i class="material-icons">event</i> -->
   </body>
 </html>
