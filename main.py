@@ -48,7 +48,10 @@ class PreferencePage(webapp2.RequestHandler):
 class AboutPage(webapp2.RequestHandler):
     def get(self):
         home_template = jinja_environment.get_template('templates/about.html')
-        self.response.write(home_template.render())
+        character_query = Character.query()
+        characters= character_query.fetch()
+        character_dict = {'characters':characters}
+        self.response.write(home_template.render(character_dict))
 
 class LoginPage(webapp2.RequestHandler):
     def get(self):
@@ -71,10 +74,10 @@ class LoginPage(webapp2.RequestHandler):
                 text1 = "Welcome %s %s (%s)!" % (now_user.first_name,now_user.last_name,email_address)
                 text2 ="<form action='/home'><button>Go to Site</button><br> %s <br></form><br>" % signout_link_html
             else:
-                text1 = "Welcome to our site, %s!  Please sign up!" % (email_address)
+                text1 = "Welcome, %s!  Please sign up!" % (email_address)
                 text2 = "<br><form method='post'><input type='text' name='first_name'><input type='text' name='last_name'><input type='submit'></form><br> %s <br>" %  (signout_link_html)
         else:
-            text1 = "Welcome to the Super Smash Brothers Character Generator! Please log in!"
+            text1 = "Welcome! Please log in!"
             text2 = "<br><a href='%s'>Sign in</a>" % (users.create_login_url('/'))
         text_dict = {'text1':text1,'text2':text2}
         self.response.write(login_template.render(text_dict))
