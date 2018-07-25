@@ -62,7 +62,7 @@ class LoginPage(webapp2.RequestHandler):
         print(user_fetch)
         if user:
             email_address = user.nickname()
-            signout_link_html = '<a href="%s">sign out</a>' % (users.create_logout_url('/'))
+            signout_link_html = '<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect starttext" href="%s">sign out</a>' % (users.create_logout_url('/'))
             for i in user_fetch:
                 if(str(i.email_address)==email_address):
                     previous_user = True
@@ -72,13 +72,13 @@ class LoginPage(webapp2.RequestHandler):
                     previous_user = False
             if previous_user:
                 text1 = "Welcome %s %s (%s)!" % (now_user.first_name,now_user.last_name,email_address)
-                text2 ="<form action='/home'><button>Go to Site</button><br> %s <br></form><br>" % signout_link_html
+                text2 ="<form action='/home'><button class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect starttext'>Go to Site</button><br> %s <br></form><br>" % signout_link_html
             else:
                 text1 = "Welcome, %s!  Please sign up!" % (email_address)
                 text2 = "<br><form method='post'><input type='text' name='first_name'><input type='text' name='last_name'><input type='submit'></form><br> %s <br>" %  (signout_link_html)
         else:
             text1 = "Welcome! Please log in!"
-            text2 = "<br><a href='%s'>Sign in</a>" % (users.create_login_url('/'))
+            text2 = "<br><a class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect starttext' href='%s'>Sign in</a>" % (users.create_login_url('/'))
         text_dict = {'text1':text1,'text2':text2}
         self.response.write(login_template.render(text_dict))
     def post(self):
