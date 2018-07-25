@@ -41,7 +41,7 @@
       </nav>
     </div>
 
-    <form  method = "post">
+    <form  method = "post" action="/prefs?type=show">
       <div class="selectors">
         <div class="question">
           <h4>Choose your skill level:</h4>
@@ -83,11 +83,11 @@
         <p class="chartext" id="charline1"><b>{{character.name}}</b></p>
         <p class="chartext" id="charline2">Wiki Link: <a href='{{character.wiki_link}}'>{{character.wiki_link}}</a></p>
         <p class="chartext" id="charline1">Special Moves: {{character.up_b}}, {{character.side_b}}, {{character.down_b}}</p>
-        <button value = "{{character.key}}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Save character to profile</button><br>
+        <button value = "{{character.key}}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect savebutton" name="savebutton">Save character to profile</button><br>
       </div>
     {% endfor %}
 
 
-
+    <script src="../scripts/save.js"></script>
   </body>
   </html>

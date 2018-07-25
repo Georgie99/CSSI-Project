@@ -12,45 +12,12 @@ jinja_environment = jinja2.Environment(
     extensions = ['jinja2.ext.autoescape'],
     autoescape = False)
 
+user = users.get_current_user()
+
 class HomePage(webapp2.RequestHandler):
     def get(self):
         home_template = jinja_environment.get_template('templates/home.html')
         self.response.write(home_template.render())
-
-class PreferencePage(webapp2.RequestHandler):
-    def get(self):
-        prefs_template = jinja_environment.get_template('templates/prefs.html')
-        self.response.write(prefs_template.render())
-    def post(self):
-        skill = self.request.get("skill")
-        pref = self.request.get("pref")
-        color = self.request.get("color")
-        character_query = Character.query()
-        if(pref=="strength"):
-            characters = character_query.filter(Character.skill==int(skill),Character.color==color,Character.strength>5).order(-Character.strength).fetch()
-        else:
-            characters = character_query.filter(Character.skill==int(skill),Character.color==color,Character.speed>5).order(-Character.speed).fetch()
-        prefs_template = jinja_environment.get_template('templates/prefs.html')
-        if(characters==[]):
-            if(pref=="strength"):
-                characters = character_query.filter(Character.skill==int(skill),Character.strength>5).order(-Character.strength).fetch()
-            else:
-                characters = character_query.filter(Character.skill==int(skill),Character.speed>5).order(-Character.speed).fetch()
-        character_dict = {'characters':characters}
-        self.response.write(prefs_template.render(character_dict))
-
-class AboutPage(webapp2.RequestHandler):
-    def get(self):
-        n = ''
-        home_template = jinja_environment.get_template('templates/about.html')
-        character_query = Character.query()
-        characters= character_query.order(Character.name).fetch()
-        character_dict = {'characters':characters}
-        # def NameandrandomNumber(name):
-        #     thing="../%s/%d.gif"%(name, random.randint(1,4))
-        #     return thing
-        self.response.write(home_template.render(character_dict))
-
 
 class LoginPage(webapp2.RequestHandler):
     def get(self):
@@ -82,14 +49,63 @@ class LoginPage(webapp2.RequestHandler):
         email_address = user.nickname()
         first_name = self.request.get("first_name")
         last_name = self.request.get("last_name")
-        new_user = User(email_address=email_address,first_name=first_name,last_name=last_name)
+        new_user = User(email_address=email_address,first_name=first_name,last_name=last_name,saved_chars=[])
         new_user.put()
         self.redirect('/home')
+
+class PreferencePage(webapp2.RequestHandler):
+    def get(self):
+        prefs_template = jinja_environment.get_template('templates/prefs.html')
+        self.response.write(prefs_template.render())
+    def post(self):
+        if(self.request.get("type")=="show"):
+            skill = self.request.get("skill")
+            pref = self.request.get("pref")
+            color = self.request.get("color")
+            character_query = Character.query()
+            if(pref=="strength"):
+                characters = character_query.filter(Character.skill==int(skill),Character.color==color,Character.strength>5).order(-Character.strength).fetch()
+            else:
+                characters = character_query.filter(Character.skill==int(skill),Character.color==color,Character.speed>5).order(-Character.speed).fetch()
+            prefs_template = jinja_environment.get_template('templates/prefs.html')
+            if(characters==[]):
+                if(pref=="strength"):
+                    characters = character_query.filter(Character.skill==int(skill),Character.strength>5).order(-Character.strength).fetch()
+                else:
+                    characters = character_query.filter(Character.skill==int(skill),Character.speed>5).order(-Character.speed).fetch()
+            character_dict = {'characters':characters}
+            self.response.write(prefs_template.render(character_dict))
+        elif(self.request.get("type")=="addChar"):
+            print(user)
+            user_query = User.query()
+            user_fetch = user_query.fetch()
+            if user:
+                for i in user_fetch:
+                    email_address = user.nickname()
+                    if(i.email_address==email_address):
+                        now_user = i
+                now_user.saved_chars.append(self.request.get("characterKey"))
+                now_user.put()
+                print(now_user)
+            else:
+                self.response.write('''Log in first!''')
+class AboutPage(webapp2.RequestHandler):
+    def get(self):
+        n = ''
+        home_template = jinja_environment.get_template('templates/about.html')
+        character_query = Character.query()
+        characters= character_query.order(Character.name).fetch()
+        character_dict = {'characters':characters}
+        # def NameandrandomNumber(name):
+        #     thing="../%s/%d.gif"%(name, random.randint(1,4))
+        #     return thing
+        self.response.write(home_template.render(character_dict))
 
 class ProfilePage(webapp2.RequestHandler):
     def get(self):
         profile_template = jinja_environment.get_template('templates/profile.html')
         user = users.get_current_user()
+        print(user)
         user_query = User.query()
         user_fetch = user_query.fetch()
         signout_link_html = '<a href="%s">sign out</a>' % (users.create_logout_url('/'))
