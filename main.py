@@ -42,16 +42,7 @@ class PreferencePage(webapp2.RequestHandler):
                 characters = character_query.filter(Character.skill==int(skill),Character.strength>5).order(-Character.strength).fetch()
             else:
                 characters = character_query.filter(Character.skill==int(skill),Character.speed>5).order(-Character.speed).fetch()
-<<<<<<< HEAD
         character_dict = {'characters':characters}
-=======
-            for i in characters:
-                character.append('<div class="character"><img id="charimage" src="%s">' % i.image_url)
-                character.append('<p class="chartext" id="charline1">%s</p><br>' % i.name)
-                character.append('<p class="chartext" id="charline2">Wiki Link: %s</p><br>' % i.wiki_link)
-                character.append('<p class="chartext" id="charline3">Moves: %s, %s, %s</p></div>' % (i.up_b,i.side_b,i.down_b))
-        character_dict = {'character':"".join(character)}
->>>>>>> 4b0e0ff3c64dd6bade2dd4c0849e0be77691b567
         self.response.write(prefs_template.render(character_dict))
 
 class AboutPage(webapp2.RequestHandler):
