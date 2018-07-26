@@ -11,7 +11,6 @@ header{
 }
 p {
 letter-spacing: 0px;
-text-indent: 50px;
 }
 header{
   z-index: 1;
@@ -59,6 +58,7 @@ header{
   min-height: fit-content;
   width: 75%;
   text-align: center;
+  margin: 0;
 
 }
 .mdl-layout.mdl-js-layout.mdl-layout--fixed-header.mdl-layout--fixed-tabs{
