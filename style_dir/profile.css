@@ -12,7 +12,7 @@ body {
   background-color: black;
   min-height:70%;
   width:100%;
-
+  wrap: wrap;
 
 }
 .myPrefs{
@@ -26,4 +26,6 @@ body {
   width: 30%;
   margin-top: 3.125%;
   margin-bottom: 3.125%;
+  margin-right: 12.5%;
+  margin-left: 12.5%;
 }
