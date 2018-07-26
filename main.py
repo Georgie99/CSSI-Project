@@ -254,7 +254,10 @@ class ProfilePage(webapp2.RequestHandler):
 
 class LeaderboardPage(webapp2.RequestHandler):
     def get(self):
-        pass
+        leaderboard_template = jinja_environment.get_template('templates/leaderboard.html')
+        characters = Character.query().order(-Character.votes).fetch()
+        char_div = {'characters':characters}
+        self.response.write(leaderboard_template.render(char_div))
 
 app = webapp2.WSGIApplication([
     ('/', LoginPage),
