@@ -6,26 +6,19 @@ body {
   align-content:center;
 
 }
-#prefs{
-  display: flex;
-  flex-direction: row;
-  background-color: black;
-  min-height:fit-content;
-  width:100%;
-  wrap: wrap;
 
-}
 .myPrefs{
+  color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 25px;
   box-shadow: 2px 2px 10px rgba(0,0,0, .75);
   min-height:fit-content;
-  width: 30%;
-  margin-top: 3.125%;
-  margin-bottom: 3.125%;
-  margin-right: 12.5%;
-  margin-left: 12.5%;
+  width: 50%;
+  margin-top: 6.25%;
+  margin-bottom: 6.25%;
+  margin-left: 25%;
+  margin-right: 25%
 }
