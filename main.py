@@ -12,8 +12,6 @@ jinja_environment = jinja2.Environment(
     extensions = ['jinja2.ext.autoescape'],
     autoescape = False)
 
-user = users.get_current_user()
-
 class HomePage(webapp2.RequestHandler):
     def get(self):
         home_template = jinja_environment.get_template('templates/home.html')
@@ -49,7 +47,7 @@ class LoginPage(webapp2.RequestHandler):
         email_address = user.nickname()
         first_name = self.request.get("first_name")
         last_name = self.request.get("last_name")
-        new_user = User(email_address=email_address,first_name=first_name,last_name=last_name,saved_chars=[])
+        new_user = User(email_address=email_address,first_name=first_name,last_name=last_name,saved_chars=[ndb.Key('Character',4977764016848896)])
         new_user.put()
         self.redirect('/home')
 
@@ -57,7 +55,11 @@ class PreferencePage(webapp2.RequestHandler):
     def get(self):
         prefs_template = jinja_environment.get_template('templates/prefs.html')
         self.response.write(prefs_template.render())
+        user = users.get_current_user()
+        print(user)
     def post(self):
+        user = users.get_current_user()
+        print(user)
         if(self.request.get("type")=="show"):
             skill = self.request.get("skill")
             pref = self.request.get("pref")
@@ -84,9 +86,9 @@ class PreferencePage(webapp2.RequestHandler):
                     email_address = user.nickname()
                     if(i.email_address==email_address):
                         now_user = i
-                now_user.saved_chars.append(self.request.get("characterKey"))
+                now_user.saved_chars.append(ndb.Key('Character',int(self.request.get("characterKey"))))
+                print(self.request.get("characterKey"))
                 now_user.put()
-                print(now_user)
             else:
                 self.response.write('''Log in first!''')
 class AboutPage(webapp2.RequestHandler):
@@ -122,7 +124,7 @@ class ProfilePage(webapp2.RequestHandler):
         else:
             line2 = "Sorry, please log in to continue."
             line3 = ""
-        lines_dict = {'line2':line2,'line3':line3}
+        lines_dict = {'line2':line2,'line3':line3, 'line1':now_user.saved_chars}
         self.response.write(profile_template.render(lines_dict))
 
 
