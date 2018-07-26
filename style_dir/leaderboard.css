@@ -1,6 +1,9 @@
 body{
   background-color: #333;
 }
+p{
+  font-size: 20px;
+}
 .characters{
   color: black;
   display: flex;
