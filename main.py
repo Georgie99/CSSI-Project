@@ -153,7 +153,7 @@ class LoginPage(webapp2.RequestHandler):
                 text2 ="<form action='/home'><button class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect starttext'>Go to Site</button><br> %s <br></form><br>" % signout_link_html
             else:
                 text1 = "Welcome, %s!  Please sign up!" % (email_address)
-                text2 = "<br><form method='post'><p style='color: white; font-size: 18px;'>First name: </p><input type='text' name='first_name'><p style='color: white; font-size: 18px;'>Last name: </p><input type='text' name='last_name'><input type='submit' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect starttext'></form><br> %s <br>" %  (signout_link_html)
+                text2 = "<br><form method='post'><p style='color: white; font-size: 18px;'>First name: </p><input type='text' name='first_name'><p style='color: white; font-size: 18px;'>Last name: </p><input type='text' name='last_name'><br><input type='submit' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect starttext'></form><br> %s <br>" %  (signout_link_html)
         else:
             text1 = "Welcome! Please log in!"
             text2 = "<br><a class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect starttext' href='%s'>Sign in</a>" % (users.create_login_url('/'))
