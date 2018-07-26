@@ -11,6 +11,7 @@ class Character(ndb.Model):
     up_b=ndb.StringProperty()
     side_b=ndb.StringProperty()
     down_b=ndb.StringProperty()
+    votes=ndb.IntegerProperty(default=0)
 
 class User(ndb.Model):
   first_name = ndb.StringProperty()
