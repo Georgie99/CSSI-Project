@@ -12,8 +12,6 @@ jinja_environment = jinja2.Environment(
     extensions = ['jinja2.ext.autoescape'],
     autoescape = False)
 
-user = users.get_current_user()
-
 class HomePage(webapp2.RequestHandler):
     def get(self):
         home_template = jinja_environment.get_template('templates/home.html')
@@ -49,7 +47,7 @@ class LoginPage(webapp2.RequestHandler):
         email_address = user.nickname()
         first_name = self.request.get("first_name")
         last_name = self.request.get("last_name")
-        new_user = User(email_address=email_address,first_name=first_name,last_name=last_name,saved_chars=[])
+        new_user = User(email_address=email_address,first_name=first_name,last_name=last_name,saved_chars=[ndb.Key('Character',4977764016848896)])
         new_user.put()
         self.redirect('/home')
 
@@ -57,7 +55,11 @@ class PreferencePage(webapp2.RequestHandler):
     def get(self):
         prefs_template = jinja_environment.get_template('templates/prefs.html')
         self.response.write(prefs_template.render())
+        user = users.get_current_user()
+        print(user)
     def post(self):
+        user = users.get_current_user()
+        print(user)
         if(self.request.get("type")=="show"):
             skill = self.request.get("skill")
             pref = self.request.get("pref")
@@ -119,11 +121,6 @@ class ProfilePage(webapp2.RequestHandler):
                     now_user = i
             line2 = "Welcome " + now_user.first_name + " " + now_user.last_name
             line3 = "Your email address: " + now_user.email_address
-            # image_urls = []
-            # for char in now_user.saved_chars:
-            #     character = char.get()
-            #     image_urls.append("<img src='%s'>" % str(character.image_url))
-            # print(image_urls)
         else:
             line2 = "Sorry, please log in to continue."
             line3 = ""
