@@ -48,9 +48,12 @@
 
   <h3 align="center">  {{line3}}</h3>
   <br>
-  <div id="prefs">
-      {{line1}}
+  {% for char in line1 %}
+  <div id='prefs' >
+    <img id="charimage" src="{{char.get().image_url}}">
+    <p class="chartext" id="charline1"><b>{{char.get().name}}</b></p>
   </div>
+  {% endfor %}
 </div>
 
     <!-- <i class="material-icons">event</i> -->

@@ -119,15 +119,15 @@ class ProfilePage(webapp2.RequestHandler):
                     now_user = i
             line2 = "Welcome " + now_user.first_name + " " + now_user.last_name
             line3 = "Your email address: " + now_user.email_address
-            image_urls = []
-            for char in now_user.saved_chars:
-                character = char.get()
-                image_urls.append("<img src='%s'>" % str(character.image_url))
-            print(image_urls)
+            # image_urls = []
+            # for char in now_user.saved_chars:
+            #     character = char.get()
+            #     image_urls.append("<img src='%s'>" % str(character.image_url))
+            # print(image_urls)
         else:
             line2 = "Sorry, please log in to continue."
             line3 = ""
-        lines_dict = {'line2':line2,'line3':line3, 'line1':image_urls}
+        lines_dict = {'line2':line2,'line3':line3, 'line1':now_user.saved_chars}
         self.response.write(profile_template.render(lines_dict))
 
 
