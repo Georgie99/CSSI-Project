@@ -7,8 +7,8 @@
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="../style_dir/prefs.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 
   <title></title>
 </head>
@@ -75,7 +75,7 @@
 
 
     {% for character in characters %}
-      <div id='character' >
+      <div id='character' class="animated fadeInUp delay-5s slow">
         <img id="charimage" src="{{character.image_url}}">
         <p class="chartext" id="charline1"><b>{{character.name}}</b></p>
         <p class="chartext" id="charline2">Wiki Link: <a href='{{character.wiki_link}}'>{{character.wiki_link}}</a></p>
