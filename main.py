@@ -21,6 +21,7 @@ class LoginPage(webapp2.RequestHandler):
     def get(self):
         login_template = jinja_environment.get_template('templates/login.html')
         user = users.get_current_user()
+        print(user)
         user_query = User.query()
         user_fetch = user_query.fetch()
         if user:
@@ -44,6 +45,7 @@ class LoginPage(webapp2.RequestHandler):
         self.response.write(login_template.render(text_dict))
     def post(self):
         user = users.get_current_user()
+        print(user)
         email_address = user.nickname()
         first_name = self.request.get("first_name")
         last_name = self.request.get("last_name")
@@ -52,14 +54,19 @@ class LoginPage(webapp2.RequestHandler):
         self.redirect('/home')
 
 class PreferencePage(webapp2.RequestHandler):
-    def get(self):
+    def get(self,input_dict={}):
         prefs_template = jinja_environment.get_template('templates/prefs.html')
-        self.response.write(prefs_template.render())
+        self.response.write(prefs_template.render(input_dict))
         user = users.get_current_user()
         print(user)
     def post(self):
         user = users.get_current_user()
         print(user)
+        user_query = User.query()
+        if user:
+            user_fetch = user_query.filter(User.email_address==user.nickname()).fetch()[0]
+            user_id = user_fetch.key.id()
+            print(user_id)
         if(self.request.get("type")=="show"):
             skill = self.request.get("skill")
             pref = self.request.get("pref")
@@ -69,28 +76,23 @@ class PreferencePage(webapp2.RequestHandler):
                 characters = character_query.filter(Character.skill==int(skill),Character.color==color,Character.strength>5).order(-Character.strength).fetch()
             else:
                 characters = character_query.filter(Character.skill==int(skill),Character.color==color,Character.speed>5).order(-Character.speed).fetch()
-            prefs_template = jinja_environment.get_template('templates/prefs.html')
             if(characters==[]):
                 if(pref=="strength"):
                     characters = character_query.filter(Character.skill==int(skill),Character.strength>5).order(-Character.strength).fetch()
                 else:
                     characters = character_query.filter(Character.skill==int(skill),Character.speed>5).order(-Character.speed).fetch()
-            character_dict = {'characters':characters}
-            self.response.write(prefs_template.render(character_dict))
+            character_dict = {'characters':characters,'userid':user_id}
+            self.get(character_dict)
         elif(self.request.get("type")=="addChar"):
-            print(user)
-            user_query = User.query()
-            user_fetch = user_query.fetch()
-            if user:
-                for i in user_fetch:
-                    email_address = user.nickname()
-                    if(i.email_address==email_address):
-                        now_user = i
-                now_user.saved_chars.append(ndb.Key('Character',int(self.request.get("characterKey"))))
-                print(self.request.get("characterKey"))
-                now_user.put()
-            else:
-                self.response.write('''Log in first!''')
+            user_fetch = User.query().fetch()
+            print(self.request.get("userId"))
+            for i in user_fetch:
+                print(i.key.id())
+                if(i.key.id()==int(self.request.get("userId"))):
+                    now_user = i
+            now_user.saved_chars.append(ndb.Key('Character',int(self.request.get("characterKey"))))
+            print(self.request.get("characterKey"))
+            now_user.put()
 class AboutPage(webapp2.RequestHandler):
     def get(self):
         n = ''
