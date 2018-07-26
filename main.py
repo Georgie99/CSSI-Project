@@ -252,11 +252,15 @@ class ProfilePage(webapp2.RequestHandler):
         lines_dict = {'line2':line2,'line3':line3, 'line1':now_user.saved_chars}
         self.response.write(profile_template.render(lines_dict))
 
+class LeaderboardPage(webapp2.RequestHandler):
+    def get(self):
+        pass
 
 app = webapp2.WSGIApplication([
     ('/', LoginPage),
     ('/home',HomePage),
     ('/prefs', PreferencePage),
     ('/abt', AboutPage),
-    ('/profile',ProfilePage)
+    ('/profile',ProfilePage),
+    ('/leaderboard',LeaderboardPage)
 ], debug=True)
