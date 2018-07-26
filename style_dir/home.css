@@ -16,6 +16,11 @@
 i{
   color:white
 }
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 div.start{
   position: relative;
   margin-top: 12.5%;
@@ -46,8 +51,7 @@ div.start{
   color:white;
 }
 #welcome{
-  order: -1;
-
+  text-align: center;
 }
 
 #prefbutt{
@@ -63,6 +67,7 @@ div.mdl-layout__drawer-button {
   color: white;
   background-color: black;
 }
+
 /* div.mdl-layout__drawer{
   background-color: black;
 } */
