@@ -6,12 +6,10 @@
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.light_green-pink.min.css" />
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="../style_dir/prefs.css">
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+  <link rel="stylesheet" href="../style_dir/leaderboard.css">
 </head>
 <body>
-  <!-- A workig menu -->
+  <!-- A working menu -->
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
       <div class="mdl-layout__header-row">
@@ -37,44 +35,8 @@
       </nav>
     </div>
 
-    <form  method = "post" action="/prefs?type=show">
-      <div class="selectors">
-        <div class="question">
-          <h5>Choose your skill level:</h5>
-          <select  name="skill">
-            <option value="3">Beginner</option>
-            <option value="2">Medium</option>
-            <option value="1">Expert</option>
-          </select>
-        </div>
-        <div class="question">
-          <h5>Choose your preference:</h5>
-          <select  name="pref">
-            <option value="strength">Strength</option>
-            <option value="speed">Speed</option>
-          </select>
-        </div>
-        <div class="question">
-          <h5>Choose your color:</h5>
-          <select name="color">
-            <option value="black">Black</option>
-            <option value="pink">Pink</option>
-            <option value="blue">Blue</option>
-            <option value="green">Green</option>
-            <option value="yellow">Yellow</option>
-            <option value="orange">Orange</option>
-            <option value="red">Red</option>
-          </select>
-        </div>
-      </div>
-
-      <button id="butt" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Go!</button>
-    </form>
-
-
-
     {% for character in characters %}
-      <div id='character' class="">
+      <div id='' class="characters">
         <img id="charimage" src="{{character.image_url}}">
         <p class="chartext" id="charline1"><b>{{character.name}}</b></p>
         <p class="chartext" id="charline2">Wiki Link: <a href='{{character.wiki_link}}'>{{character.wiki_link}}</a></p>
@@ -83,17 +45,6 @@
         <button user_id = "{{userid}}" id="" value = "{{character.key.id()}}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect savebutton" name="savebutton">Save character to profile</button><br>
       </div>
     {% endfor %}
-
-
-    <script src="../scripts/save.js"></script>
-     <!-- <script>
-      let characterdiv = document.querySelector(".animated")
-      characterdiv.addEventListener('mouseover', e=>{
-        characterdiv.classList.add('tada slower')
-      })
-      characterdiv.addEventListener('mouseout', e=>{
-        characterdiv.classList.remove('tada slower')
-      })
-    </script> -->
+>
   </body>
   </html>
