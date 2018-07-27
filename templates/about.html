@@ -8,6 +8,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <meta charset="utf-8">
+<<<<<<< HEAD
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <div id="fb-root"></div>
    <script>(function(d, s, id) {
@@ -17,6 +18,10 @@
      js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));</script>  </head>
+=======
+    <title>About</title>
+  </head>
+>>>>>>> 232038e7defc68c07b430492422ee16c62a6cbb9
   <body>
     <!-- Left aligned menu below button. This is a menubutton that works -->
 <!-- <button id="demo-menu-lower-left"
@@ -133,7 +138,6 @@
   <div style="background: black;background-image:url({{character.image_url}}); background-repeat: no-repeat;"class="demo-card-image mdl-card mdl-shadow--2dp">
     <div class="mdl-card__title mdl-card--expand"></div>
     <div class="mdl-card__actions">
-      <span class="demo-card-image__filename">{{character.name}} in action</span>
     </div>
   </div>
   <!-- Event card -->
@@ -145,7 +149,12 @@
       </h4>
     </div>
     <div class="mdl-card__actions mdl-card--border">
+<<<<<<< HEAD
       <a target="_blank" href="{{character.wiki_link}}"class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+=======
+      <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect votebutton" name="votebutton" value = "{{character.key.id()}}">Vote!</button><br>
+      <a href="{{character.wiki_link}}"class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+>>>>>>> 232038e7defc68c07b430492422ee16c62a6cbb9
         Wiki Link
       </a>
       <div class="mdl-layout-spacer"></div>
@@ -172,5 +181,20 @@
 </footer>
     <!-- <i class="material-icons">event</i> -->
 
+<<<<<<< HEAD
+=======
+    // Settings that can be overriden on per-element basis, by `data-aos-*` attributes:
+    offset: 120, // offset (in px) from the original trigger point
+    delay: 0, // values from 0 to 3000, with step 50ms
+    duration: 400, // values from 0 to 3000, with step 50ms
+    easing: 'ease', // default easing for AOS animations
+    once: true, // whether animation should happen only once - while scrolling down
+    mirror: false, // whether elements should animate out while scrolling past them
+    anchorPlacement: 'center-bottom', // defines which position of the element regarding to window should trigger the animation
+    });
+  </script>
+
+  <script src="../scripts/about.js"></script>
+>>>>>>> 232038e7defc68c07b430492422ee16c62a6cbb9
   </body>
 </html>
