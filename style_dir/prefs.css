@@ -103,3 +103,8 @@ form{
   from{left:0; opacity: 1;}
   to{left:0; opacity: 0;}
 }
+select{
+  appearance:none;
+  -webkit-appearance: none;
+  font-size: 17px;
+}
