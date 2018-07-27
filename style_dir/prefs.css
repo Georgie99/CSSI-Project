@@ -120,3 +120,6 @@ select{
 .mdl-layout{
   min-height: fit-content;
 }
+.mdl-layout.mdl-js-layout.mdl-layout--fixed-header{
+  justify-content: space-between;
+}
