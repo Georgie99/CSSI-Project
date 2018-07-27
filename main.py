@@ -228,6 +228,14 @@ class AboutPage(webapp2.RequestHandler):
         #     thing="../%s/%d.gif"%(name, random.randint(1,4))
         #     return thing
         self.response.write(home_template.render(character_dict))
+    def post(self):
+        char_fetch = Character.query().fetch()
+        for i in char_fetch:
+            print(self.request.get("characterKey"))
+            if(i.key.id()==int(self.request.get("characterKey"))):
+                now_char = i
+        now_char.votes = now_char.votes + 1
+        now_char.put()
 
 class ProfilePage(webapp2.RequestHandler):
     def get(self):

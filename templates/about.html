@@ -127,7 +127,6 @@
   <div style="background: black;background-image:url({{character.image_url}}); background-repeat: no-repeat;"class="demo-card-image mdl-card mdl-shadow--2dp">
     <div class="mdl-card__title mdl-card--expand"></div>
     <div class="mdl-card__actions">
-      <span class="demo-card-image__filename">{{character.name}} in action</span>
     </div>
   </div>
   <!-- Event card -->
@@ -139,6 +138,7 @@
       </h4>
     </div>
     <div class="mdl-card__actions mdl-card--border">
+      <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect votebutton" name="votebutton" value = "{{character.key.id()}}">Vote!</button><br>
       <a href="{{character.wiki_link}}"class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
         Wiki Link
       </a>
@@ -174,5 +174,7 @@
     anchorPlacement: 'center-bottom', // defines which position of the element regarding to window should trigger the animation
     });
   </script>
+
+  <script src="../scripts/about.js"></script>
   </body>
 </html>
