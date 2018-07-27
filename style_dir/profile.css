@@ -22,3 +22,10 @@ body {
   margin-left: 25%;
   margin-right: 25%
 }
+.mdl-mini-footer{
+  width: 100%;
+  padding-right: 8px;
+  padding-left: 8px;
+  justify-content: space-around;
+  font-size: 18px;
+}

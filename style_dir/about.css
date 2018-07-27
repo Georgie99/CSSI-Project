@@ -66,18 +66,14 @@ header{
 .mdl-layout.mdl-js-layout.mdl-layout--fixed-header.mdl-layout--fixed-tabs{
   z-index: 1;
 }
-div.us{
-  display: flex;
-  min-height: fit-content;
-  width: 75%;
-  justify-content: space-around;
-  margin-bottom: 1.5625%;
-}
+
 
 .mdl-mini-footer{
   width: 100%;
-  padding-bottom: 32px;
-  font-size: 16px;
+  padding-right: 8px;
+  padding-left: 8px;
+  justify-content: space-around;
+  font-size: 18px;
 }
 .fb-share-button{
 }

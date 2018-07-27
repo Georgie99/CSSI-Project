@@ -108,3 +108,15 @@ select{
   -webkit-appearance: none;
   font-size: 17px;
 }
+.mdl-mini-footer{
+  width: 100%;
+  padding-right: 8px;
+  padding-left: 8px;
+  justify-content: space-around;
+  font-size: 18px;
+  bottom:0%;
+
+}
+.mdl-layout{
+  min-height: fit-content;
+}
