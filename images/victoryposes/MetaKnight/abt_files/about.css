@@ -22,7 +22,7 @@ header{
   align-items: center;
   align-content: space-around;
   z-index: 1;
-  min-height: fit-content;
+  width: inherit;
 }
 /* body */
 /* .demo-card-image.mdl-card {

@@ -55,7 +55,7 @@
   <div class="myPrefs">
     <img id="charimage" src="{{char.get().image_url}}">
     <p class="chartext" id="charline1"><b>{{char.get().name}}</b></p>
-    <p class="chartext" id="charline2">Wiki Link: <a href='{{char.get().wiki_link}}'>{{char.get().wiki_link}}</a></p>
+    <p class="chartext" id="charline2">Wiki Link: <a target="_blank" href='{{char.get().wiki_link}}'>{{char.get().wiki_link}}</a></p>
     <p class="chartext" id="charline1">Special Moves: {{char.get().up_b}}, {{char.get().side_b}}, {{char.get().down_b}}</p>
   </div>
   {% endfor %}
