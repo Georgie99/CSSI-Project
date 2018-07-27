@@ -9,8 +9,15 @@
   <link rel="stylesheet" href="../style_dir/prefs.css">
   <link rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+
 </head>
 <body>
+  <script>
+    var toasty= document.querySelector('#thetoast')
+    function toast() {
+      toasty.classList.add(".display")
+    }
+  </script>
   <!-- A workig menu -->
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
@@ -35,8 +42,10 @@
         <a class="mdl-navigation__link" href="/profile">Your Profile</a>
         <a class="mdl-navigation__link" href="/">Log Out</a>
       </nav>
+
     </div>
 
+    <p id="thetoast">A vote for them!</p>
     <form  method = "post" action="/prefs?type=show">
       <div class="selectors">
         <div class="question">
@@ -80,7 +89,7 @@
         <p class="chartext" id="charline2">Wiki Link: <a href='{{character.wiki_link}}'>{{character.wiki_link}}</a></p>
         <p class="chartext" id="charline1">Special Moves: {{character.up_b}}, {{character.side_b}}, {{character.down_b}}</p>
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect votebutton" name="votebutton" value = "{{character.key.id()}}">Vote for this character</button><br>
-        <button user_id = "{{userid}}" id="" value = "{{character.key.id()}}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect savebutton" name="savebutton">Save character to profile</button><br>
+        <button onclick="toast()" user_id = "{{userid}}" id="onlybutton" value = "{{character.key.id()}}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect savebutton" name="savebutton">Save character to profile</button><br>
       </div>
     {% endfor %}
 
@@ -95,5 +104,6 @@
         characterdiv.classList.remove('tada slower')
       })
     </script> -->
+
   </body>
   </html>
