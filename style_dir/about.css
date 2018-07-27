@@ -11,6 +11,7 @@ header{
 }
 p {
 letter-spacing: 0px;
+font-size: 17px;
 }
 header{
   z-index: 1;
